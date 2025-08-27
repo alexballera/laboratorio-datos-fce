@@ -1,0 +1,25 @@
+# Archivo de configuración para pre-commit.
+# Ver: https://pre-commit.com/
+
+repos:
+# Hooks estándar para limpieza de archivos
+-   repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v4.6.0
+    hooks:
+    -   id: trailing-whitespace      # Elimina espacios en blanco al final de las líneas
+    -   id: end-of-file-fixer        # Asegura que los archivos terminen con una línea nueva
+    -   id: check-yaml               # Valida la sintaxis de los archivos YAML
+    -   id: check-added-large-files  # Evita commitear archivos grandes (ej. datasets > 5MB)
+
+# Hook para el formateador de código Black
+-   repo: https://github.com/psf/black
+    rev: 24.4.2
+    hooks:
+    -   id: black
+        language_version: python3.12 # Asegura que use la misma versión de Python
+
+# Hook para el linter Flake8
+-   repo: https://github.com/PyCQA/flake8
+    rev: 7.1.0
+    hooks:
+    -   id: flake8
