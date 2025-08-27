@@ -2,6 +2,10 @@
 __pycache__/
 *.py[cod]
 *$py.class
+*.pyc
+*.pyo
+*.pyd
+.ipynb_checkpoints/
 
 # C extensions
 *.so
@@ -94,6 +98,7 @@ env.bak/
 venv.bak/
 .conda/
 
+
 # Spyder project settings
 .spyderproject
 .spyproject
@@ -115,6 +120,7 @@ dmypy.json
 # VS Code
 .vscode/
 *.code-workspace
+.idea/
 
 # macOS
 .DS_Store

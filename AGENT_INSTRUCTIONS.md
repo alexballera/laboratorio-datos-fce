@@ -30,21 +30,25 @@ laboratorio-datos-fce/
 ## 4. Patrones Clave de Desarrollo y Contenido
 
 ### 4.1. Flujo de Trabajo para Análisis de Datos
-1.  **Creación de Matriz** → **Conversión a DataFrame** → **Visualización** → **Interpretación Económica**.
-2.  Usa `np.array()` para las estructuras de datos iniciales, luego conviértelas a DataFrames de pandas con etiquetas (índices y columnas) apropiadas.
-3.  Los nombres de las variables deben tener contexto de negocio (ej. `matriz_produccion`, `ventas_trimestrales`).
+
+1. **Creación de Matriz** → **Conversión a DataFrame** → **Visualización** → **Interpretación Económica**.
+2. Usa `np.array()` para las estructuras de datos iniciales, luego conviértelas a DataFrames de pandas con etiquetas (índices y columnas) apropiadas.
+3. Los nombres de las variables deben tener contexto de negocio (ej. `matriz_produccion`, `ventas_trimestrales`).
 
 ### 4.2. Enfoque de Modelado Económico
+
 - **Definición de la función**: Comienza con la fórmula matemática en una celda de Markdown.
 - **Exploración de parámetros**: Usa variables para los coeficientes para demostrar sus efectos en el modelo.
 - **Validación visual**: Cada función o modelo debe tener un gráfico correspondiente que lo explore.
 - **Aplicación al mundo real**: Conecta los conceptos matemáticos con escenarios de negocio (demanda, costo, ingreso, beneficio).
 
 ### 4.3. Estructura de los Notebooks
+
 - **Encabezado**: Siempre comenzar con el título de la materia y el número de la sesión en Markdown.
 - **Metodología paso a paso**: Usar marcadores con el emoji ✅ para indicar pasos secuenciales y facilitar el seguimiento.
 - **Comentarios bilingües**: Las explicaciones y comentarios conceptuales deben estar en español. Los nombres de variables y funciones deben ser en inglés para seguir las convenciones de `PEP 8`.
 - **Bloque de importación estándar**: Usar este bloque al inicio de cada notebook.
+
   ```python
   import numpy as np           # para hacer operaciones matemáticas
   import pandas as pd          # para manejo de archivos de datos
@@ -53,6 +57,7 @@ laboratorio-datos-fce/
   ```
 
 ### 4.4. Estándares de Visualización
+
 - Usa `plt.figure(figsize=(8,5))` para un tamaño consistente.
 - Incluye una grilla con `plt.grid(True)`.
 - Añade líneas de ejes en cero: `plt.axhline(0, color='black', linewidth=0.5)`.
@@ -62,10 +67,12 @@ laboratorio-datos-fce/
 ## 5. Guías de Contenido Específico
 
 ### 5.1. Generación de Cuestionarios
+
 - Debes ser capaz de generar un listado de **al menos 60 preguntas únicas con sus respuestas**, basadas en los materiales de estudio proporcionados para una sesión.
 - Estas preguntas se usarán para crear cuestionarios de evaluación.
 
 ### 5.2. Creación de Contenido
+
 - Si se te pide crear contenido nuevo (notebooks, planes de estudio, etc.), sigue estrictamente los patrones y la estructura definidos en este documento.
 - Asegúrate de que los notebooks hagan referencia a los datasets correctos y que los conceptos se construyan de manera progresiva entre sesiones.
 
