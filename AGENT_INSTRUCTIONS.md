@@ -8,7 +8,14 @@
 
 ## 2. Descripción General del Proyecto
 
-Este es un repositorio educativo para la materia "Laboratorio de Datos" de la FCE-UBA. El foco está en la manipulación, análisis y visualización de datos para aplicaciones económicas, utilizando Python y Jupyter notebooks.
+Este es un repositorio **académico oficial** para la materia "Laboratorio de Datos" de la FCE-UBA. El foco está en la **aplicación práctica** de herramientas de manipulación, análisis y visualización de datos para resolver problemas económicos y de negocio, utilizando Python y Jupyter notebooks.
+
+**Características distintivas del contexto académico:**
+
+- **Estructura por sesiones**: Organizado según el cronograma académico del curso
+- **Aplicación económica**: Todos los ejemplos y ejercicios tienen contexto de ciencias económicas
+- **Metodología universitaria**: Incluye materiales de lectura, prácticas, cuestionarios y resúmenes
+- **Evaluación integrada**: Preparación para exámenes y evaluaciones de la materia
 
 ## 3. Estructura y Arquitectura del Repositorio
 
@@ -29,11 +36,12 @@ laboratorio-datos-fce/
 
 ## 4. Patrones Clave de Desarrollo y Contenido
 
-### 4.1. Flujo de Trabajo para Análisis de Datos
+### 4.1. Flujo de Trabajo Académico para Análisis de Datos Económicos
 
-1. **Creación de Matriz** → **Conversión a DataFrame** → **Visualización** → **Interpretación Económica**.
-2. Usa `np.array()` para las estructuras de datos iniciales, luego conviértelas a DataFrames de pandas con etiquetas (índices y columnas) apropiadas.
-3. Los nombres de las variables deben tener contexto de negocio (ej. `matriz_produccion`, `ventas_trimestrales`).
+1. **Contexto Económico** → **Creación de Matriz** → **Conversión a DataFrame** → **Visualización** → **Interpretación Económica** → **Conclusiones de Negocio**.
+2. Usa `np.array()` para estructuras de datos iniciales, luego conviértelas a DataFrames de pandas con etiquetas (índices y columnas) que reflejen terminología económica.
+3. Los nombres de variables deben tener **contexto de negocio específico** (ej. `matriz_produccion`, `ventas_trimestrales`, `costos_operativos`).
+4. **Conexión curricular**: Cada ejercicio debe conectar con conceptos de otras materias de la carrera.
 
 ### 4.2. Enfoque de Modelado Económico
 
@@ -42,19 +50,41 @@ laboratorio-datos-fce/
 - **Validación visual**: Cada función o modelo debe tener un gráfico correspondiente que lo explore.
 - **Aplicación al mundo real**: Conecta los conceptos matemáticos con escenarios de negocio (demanda, costo, ingreso, beneficio).
 
-### 4.3. Estructura de los Notebooks
+### 4.3. Estructura Específica de Notebooks Académicos
 
-- **Encabezado**: Siempre comenzar con el título de la materia y el número de la sesión en Markdown.
-- **Metodología paso a paso**: Usar marcadores con el emoji ✅ para indicar pasos secuenciales y facilitar el seguimiento.
-- **Comentarios bilingües**: Las explicaciones y comentarios conceptuales deben estar en español. Los nombres de variables y funciones deben ser en inglés para seguir las convenciones de `PEP 8`.
-- **Bloque de importación estándar**: Usar este bloque al inicio de cada notebook.
+- **Encabezado institucional**: Siempre comenzar con "Laboratorio de Datos (FCE-UBA) - Sesión N" en Markdown
+- **Objetivos de aprendizaje**: Listar claramente qué se espera que el estudiante aprenda
+- **Metodología paso a paso**: Usar marcadores con ✅ para pasos secuenciales y facilitar seguimiento
+- **Contexto económico**: Cada ejemplo debe tener trasfondo de ciencias económicas o empresariales
+- **Comentarios pedagógicos**: Explicaciones conceptuales en español, código con convenciones PEP 8
+- **Bloque de importación académico estándar**:
 
-  ```python
-  import numpy as np           # para hacer operaciones matemáticas
-  import pandas as pd          # para manejo de archivos de datos
-  import matplotlib.pyplot as plt  # para hacer gráficos
-  import seaborn as sns        # para hacer gráficos
-  ```
+```python
+import numpy as np           # para hacer operaciones matemáticas
+import pandas as pd          # para manejo de archivos de datos
+import matplotlib.pyplot as plt  # para hacer gráficos
+import seaborn as sns        # para hacer gráficos
+```
+
+### 4.4. Contenido por Tipo de Sesión
+
+**Notebooks de Práctica:**
+
+- Ejercicios guiados con datos económicos reales
+- Casos de estudio de empresas argentinas cuando sea posible
+- Conexión con problemáticas actuales del país
+
+**Materiales de Lectura:**
+
+- Referencias académicas y papers relevantes
+- Documentación oficial complementaria
+- Casos de estudio internacionales
+
+**Cuestionarios:**
+
+- Preguntas que evalúen comprensión conceptual y aplicación práctica
+- Formato compatible con evaluaciones universitarias
+- Variedad entre opción múltiple, desarrollo y problemas prácticos
 
 ### 4.4. Estándares de Visualización
 
