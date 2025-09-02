@@ -1,5 +1,5 @@
-# Instrucciones para GitHub Copilot
+# Laboratorio - FCE - Instrucciones para Github Copilot
 
-Lee y sigue las instrucciones detalladas en el archivo principal: [INSTRUCCIONES_AI.md](../INSTRUCCIONES_AI.md)
+> **📋 INSTRUCCIONES COMPLETAS**: Lee todas las instrucciones detalladas y unificadas en [`INSTRUCCIONES-IA.md`](../INSTRUCCIONES-IA.md)
 
 Todas las instrucciones específicas del proyecto, convenciones, flujos de trabajo y directrices están centralizadas en ese archivo.
