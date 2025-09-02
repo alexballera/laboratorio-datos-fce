@@ -1,0 +1,11 @@
+Producto,Categoría,Stock actual,Precio unitario (€),Ventas mensuales,Días en stock,Proveedor
+A001,Tecnología,150,450.0,30,60,Delta
+A002,Tecnología,85,120.0,25,45,Delta
+B101,Hogar,300,80.0,100,20,HogarTop
+B102,Hogar,120,60.0,70,25,HogarTop
+C301,Oficina,200,35.0,60,40,OfficePro
+C302,Oficina,180,50.0,45,50,OfficePro
+D401,Limpieza,400,15.0,150,15,LimpioYA
+D402,Limpieza,220,20.0,120,18,LimpioYA
+E501,Alimentos,1000,3.0,600,10,SanoPlus
+E502,Alimentos,750,4.5,400,12,SanoPlus
