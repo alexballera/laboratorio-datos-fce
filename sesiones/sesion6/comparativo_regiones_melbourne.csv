@@ -1,0 +1,9 @@
+Región,Cantidad_Ventas,Participación_Mercado_%,Precio_Promedio_AUD,Precio_Mediano_AUD,Distancia_CBD_Promedio_km,Tipo_Predominante
+Southern Metropolitan,1994,37.05,1389559.34,1240000.0,8.74,Casa
+Eastern Metropolitan,448,8.32,1126049.33,1007500.0,12.76,Casa
+South-Eastern Metropolitan,83,1.54,920064.4,860000.0,22.33,Casa
+Northern Metropolitan,1636,30.4,890942.21,800000.0,7.33,Casa
+Western Metropolitan,1195,22.2,883654.85,800000.0,9.44,Casa
+Eastern Victoria,11,0.2,674407.45,667000.0,32.49,Casa
+Northern Victoria,8,0.15,555562.5,535250.0,36.94,Casa
+Western Victoria,7,0.13,374642.86,355000.0,31.16,Casa

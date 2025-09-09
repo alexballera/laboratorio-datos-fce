@@ -1,0 +1,4 @@
+Tipo_Propiedad,Cantidad_Ventas,Participación_Mercado_%,Precio_Promedio_AUD,Precio_Mediano_AUD,Precio_Máximo_AUD,Precio_Mínimo_AUD,Habitaciones_Promedio,Distancia_CBD_Promedio_km,Área_Construida_Promedio_m2
+Casa,3529,65.57,1313289.03,1150000.0,8000000,131000,3.29,9.76,165.65
+Unidad/Apartamento,1337,24.84,588129.56,545000.0,2460000,170000,1.96,7.38,79.97
+Townhouse,516,9.59,889002.03,820000.0,2900000,319000,2.82,9.42,133.39
