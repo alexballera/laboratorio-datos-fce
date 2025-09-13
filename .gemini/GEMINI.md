@@ -1,4 +1,4 @@
-# Laboratorio de Datos FCE - Instrucciones para GEMINI
+# Laboratorio de Datos (FCE-UBA) - Instrucciones para GEMINI
 
 > **📋 INSTRUCCIONES COMPLETAS**: Lee todas las instrucciones detalladas y unificadas en [`AGENTS.md`](../AGENTS.md)
 
