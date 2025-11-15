@@ -7,10 +7,7 @@ Ejecutar desde la raíz del proyecto:
 python test_matematicas_financieras.py
 """
 
-import sys
-sys.path.append('')
-
-from matematicas_financieras import *
+from utils.matematicas_financieras import *
 import numpy as np
 
 def test_tasas_interes():
