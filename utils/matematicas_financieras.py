@@ -870,13 +870,16 @@ def plot_monte_carlo_results(npv_results: np.ndarray, title: str = "Simulación 
     success_data = npv_results[npv_results >= 0]    # NPV positivos o cero
     failure_data = npv_results[npv_results < 0]     # NPV negativos
     
-    # Crear histograma con colores diferenciados
+    # Crear histograma con colores diferenciados y ancho de barras consistente
     # Verde para éxito, rojo para pérdidas
+    # Usar rwidth para controlar el ancho de las barras (0.85 = 85% del espacio disponible)
     plt.hist(success_data, bins=n_bins, alpha=0.7, color='green', 
-             label=f'NPV ≥ 0 ({success_probability:.1%})', edgecolor='darkgreen', linewidth=0.5)
+             label=f'NPV ≥ 0 ({success_probability:.1%})', edgecolor='darkgreen', 
+             linewidth=0.5, rwidth=0.85)
     
     plt.hist(failure_data, bins=n_bins, alpha=0.7, color='red', 
-             label=f'NPV < 0 ({failure_probability:.1%})', edgecolor='darkred', linewidth=0.5)
+             label=f'NPV < 0 ({failure_probability:.1%})', edgecolor='darkred', 
+             linewidth=0.5, rwidth=0.85)
     
     # ===================================================================================
     # LÍNEAS DE REFERENCIA Y ANOTACIONES
