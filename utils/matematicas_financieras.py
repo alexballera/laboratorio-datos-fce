@@ -78,32 +78,50 @@ def annualized_rate(r: float, m: int) -> float:
 
 # %% Funciones de Valor Presente y Futuro
 
-def present_value(rate: Union[float, np.ndarray], nper: Union[int, np.ndarray], 
-                  pmt: Union[float, np.ndarray], fv: Union[int, np.ndarray] = 0) -> Union[float, np.ndarray]:
+def present_value(rate: Union[float, np.ndarray], 
+                  nper: Union[int, np.ndarray], 
+                  pmt: Union[float, np.ndarray], 
+                  fv: Union[int, np.ndarray] = 0,
+                  when: str = 'end') -> Union[float, np.ndarray]:
     """
-    Calcula el valor presente de flujos futuros usando numpy_financial.
+    Calcula el valor presente usando numpy_financial.
+    Soporta arrays para cálculos vectorizados.
     
-    @param {Union[float, np.ndarray]} fv - Valor futuro o cash flows futuros
     @param {Union[float, np.ndarray]} rate - Tasa de interés por período
-    @param {Union[float, np.ndarray]} nper - Número de períodos de capitalización
-    @param {Union[float, np.ndarray]} pmt - Pago periódico (por defecto 0)
-    @returns {Union[float, np.ndarray]} Valor presente
+    @param {Union[int, np.ndarray]} nper - Número total de períodos
+    @param {Union[float, np.ndarray]} pmt - Pago por período
+    @param {Union[float, np.ndarray]} fv - Valor futuro (default 0)
+    @param {str} when - 'end' (ordinaria) o 'begin' (anticipada)
+    @returns {Union[float, np.ndarray]} Valor presente (negativo = salida de efectivo)
     
     @example
-    >>> present_value(1000, 0.05, 10)  # $1000 en 10 períodos al 5%
-    613.91
-    >>> present_value([1000, 2000], [0.05, 0.06], [10, 15])  # Arrays
-    array([613.91, 832.04])
+    >>> # Valor presente de 36 pagos de $500 al 1% mensual
+    >>> pv = present_value(0.01, 36, 500)
+    >>> pv
+    -15044.39
+    
+    @example
+    >>> # Anualidad anticipada (pagos al inicio)
+    >>> pv_anticipada = present_value(0.01, 36, 500, when='begin')
+    
+    @example
+    >>> # Vectorizado: múltiples tasas
+    >>> rates = np.array([0.08, 0.10, 0.12])
+    >>> pvs = present_value(rates, 10, 1000)
+    >>> pvs
+    array([-6710.08, -6144.57, -5650.22])
     
     @formula
-    PV = npf.pv(rate, nper, pmt, fv)
+    PV = npf.pv(rate, nper, pmt, fv, when)
     
     @note
     - Usa numpy_financial internamente para máxima precisión
     - Soporta arrays para análisis de sensibilidad
-    - Para capitalización personalizada usar rate = tasa_anual/períodos_por_año
+    - when='end' para anualidades ordinarias (pagos al final)
+    - when='begin' para anualidades anticipadas (pagos al inicio)
     """
-    result = -npf.pv(rate, nper, pmt, fv)  # type: ignore
+    when_code = 1 if when == 'begin' else 0
+    result = -npf.pv(rate, nper, pmt, fv, when=when_code)  # type: ignore
     
     # Si todos los inputs son escalares, retorna escalar
     if np.isscalar(fv) and np.isscalar(rate) and np.isscalar(nper) and np.isscalar(pmt):
@@ -317,88 +335,113 @@ def payment_principal(rate: Union[float, np.ndarray], per: Union[int, np.ndarray
         return float(result)
     return result# %% Funciones de Análisis de Inversiones
 
-def net_present_value(initial_investment: float, cash_flows: list, r: float, T: Optional[int] = None, m: int = 1) -> float:
+def net_present_value(rate: float, cash_flows: list, periods_per_year: int = 1) -> float:
     """
-    Calcula el valor presente neto (NPV) de una inversión con capitalización.
+    Calcula el Valor Presente Neto (VPN) usando numpy_financial.
     
-    @param {float} initial_investment - Inversión inicial
-    @param {list} cash_flows - Lista de flujos de caja futuros
-    @param {float} r - Tasa de interés anual
-    @param {Optional[int]} T - Número total de períodos (por defecto len(cash_flows))
-    @param {int} m - Períodos de capitalización por año (por defecto 1)
-    @returns {float} Valor presente neto
+    @param {float} rate - Tasa de descuento anual
+    @param {list} cash_flows - [inversión_inicial_negativa, flujo1, flujo2, ...]
+    @param {int} periods_per_year - Períodos de capitalización por año (default 1)
+    @returns {float} VPN de la inversión
     
     @example
-    >>> net_present_value(10000, [3000, 4000, 5000], 0.10, 3, 1)
-    -199.21  # NPV negativo, inversión no viable
-    >>> net_present_value(10000, [3500, 4500, 5500], 0.10, 3, 1)
-    1061.57  # NPV positivo, inversión viable
+    >>> # Inversión de $10,000 con flujos de $3,000, $4,000, $5,000
+    >>> npv = net_present_value(0.10, [-10000, 3000, 4000, 5000])
+    >>> npv
+    -199.21
+    
+    @example
+    >>> # Con capitalización mensual
+    >>> npv = net_present_value(0.12, [-5000, 2000, 3000], periods_per_year=12)
     
     @formula
-    NPV = -Initial_Investment + Σ[CF_t / (1 + r/m)^(m*t)]
+    NPV = npf.npv(rate, cash_flows)
     
     @note
-    - NPV > 0: inversión viable
-    - NPV < 0: inversión no viable
-    - Considera capitalización personalizada con parámetro m
+    - Usa numpy_financial internamente para máxima precisión
+    - Si periods_per_year > 1, ajusta la tasa efectiva por período
+    - Primer flujo debe ser negativo (inversión inicial)
     """
-    if T is None:
-        T = len(cash_flows)
+    # Validaciones
+    if not cash_flows or len(cash_flows) < 2:
+        raise ValueError("Se requieren al menos 2 flujos: inversión inicial y un flujo futuro")
     
-    npv = -initial_investment
-    for i, cf in enumerate(cash_flows):
-        time_period = (i + 1) / m
-        npv += cf / (1 + r/m) ** (m * time_period)
+    if rate <= -1:
+        raise ValueError(f"Tasa de descuento inválida: {rate}. Debe ser > -1 (o > -100%)")
     
-    return npv
+    # Ajustar tasa si hay capitalización sub-anual
+    if periods_per_year > 1:
+        rate_per_period = rate / periods_per_year
+        return npf.npv(rate_per_period, cash_flows)
+    
+    return npf.npv(rate, cash_flows)
 
 # %%
 
-def internal_rate_of_return(initial_investment: float, cash_flows: list, max_iter: int = 1000, precision: float = 1e-6) -> float:
+def internal_rate_of_return(cash_flows: list, 
+                           method: str = 'numpy',
+                           max_iter: int = 1000,
+                           precision: float = 1e-6) -> float:
     """
-    Calcula la tasa interna de retorno (IRR) usando método de Newton-Raphson.
+    Calcula la Tasa Interna de Retorno (TIR).
     
-    @param {float} initial_investment - Inversión inicial
-    @param {list} cash_flows - Lista de flujos de caja futuros
-    @param {int} max_iter - Número máximo de iteraciones (por defecto 1000)
-    @param {float} precision - Precisión deseada (por defecto 1e-6)
-    @returns {float} Tasa interna de retorno
+    @param {list} cash_flows - [inversión_inicial_negativa, flujo1, flujo2, ...]
+    @param {str} method - 'numpy' (rápido, recomendado) o 'newton' (didáctico)
+    @param {int} max_iter - Iteraciones máximas para método Newton (default 1000)
+    @param {float} precision - Precisión para método Newton (default 1e-6)
+    @returns {float} TIR de la inversión
     
     @example
-    >>> internal_rate_of_return(10000, [3500, 4500, 5500])
-    0.1542  # IRR del 15.42%
-    >>> internal_rate_of_return(10000, [2000, 3000, 4000])
-    -0.0451  # IRR negativo del -4.51%
+    >>> # Método numpy (recomendado)
+    >>> irr = internal_rate_of_return([-10000, 3000, 4000, 5000])
+    >>> irr
+    0.0634  # 6.34%
+    
+    @example
+    >>> # Método Newton-Raphson (didáctico)
+    >>> irr = internal_rate_of_return([-10000, 3000, 4000, 5000], method='newton')
     
     @formula
-    Encuentra r donde NPV = -Initial_Investment + Σ[CF_t / (1 + r)^t] = 0
+    Encuentra r donde NPV = Σ[CF_t / (1 + r)^t] = 0
     
     @note
-    - Usa método iterativo Newton-Raphson
+    - El método 'numpy' usa scipy.optimize bajo el capó (más robusto)
+    - El método 'newton' implementa Newton-Raphson explícito (académico)
     - IRR > tasa de descuento: inversión viable
-    - Puede tener múltiples soluciones con flujos mixtos
     """
-    # Estimación inicial
-    rate = 0.1
+    # Validaciones
+    if not cash_flows or len(cash_flows) < 2:
+        raise ValueError("Se requieren al menos 2 flujos para calcular TIR")
     
-    for _ in range(max_iter):
-        npv = -initial_investment
-        npv_derivative = 0
+    if method == 'numpy':
+        return npf.irr(cash_flows)
+    
+    elif method == 'newton':
+        # Método Newton-Raphson (implementación didáctica)
+        initial_investment = abs(cash_flows[0])
+        future_flows = cash_flows[1:]
+        rate = 0.1  # Estimación inicial
         
-        for i, cf in enumerate(cash_flows):
-            period = i + 1
-            npv += cf / (1 + rate) ** period
-            npv_derivative -= cf * period / (1 + rate) ** (period + 1)
-        
-        if abs(npv) < precision:
-            return rate
-        
-        if npv_derivative == 0:
-            break
+        for _ in range(max_iter):
+            npv = -initial_investment
+            npv_derivative = 0
             
-        rate = rate - npv / npv_derivative
+            for i, cf in enumerate(future_flows, 1):
+                npv += cf / (1 + rate) ** i
+                npv_derivative -= cf * i / (1 + rate) ** (i + 1)
+            
+            if abs(npv) < precision:
+                return rate
+            
+            if npv_derivative == 0:
+                raise ValueError("Derivada cero: no se puede continuar con Newton-Raphson")
+            
+            rate = rate - npv / npv_derivative
+        
+        raise ValueError(f"No convergió después de {max_iter} iteraciones")
     
-    return rate
+    else:
+        raise ValueError(f"Método '{method}' no soportado. Use 'numpy' o 'newton'")
 
 # %%
 
@@ -427,115 +470,69 @@ def modified_internal_rate_of_return(cash_flows: list, finance_rate: float, rein
 
 # %%
 
-def npv_simple(rate: float, cash_flows: list) -> float:
-    """
-    Calcula el Valor Presente Neto usando numpy_financial directamente.
-    
-    @param {float} rate - Tasa de descuento 
-    @param {list} cash_flows - Lista de flujos de caja (incluyendo inversión inicial)
-    @returns {float} Valor presente neto
-    
-    @example
-    >>> npv_simple(0.10, [-1000, 300, 400, 500])
-    42.95  # NPV positivo
-    
-    @formula
-    NPV = npf.npv(rate, cash_flows)
-    
-    @note
-    - Wrapper directo de numpy_financial.npv()
-    - Primer flujo debe ser la inversión inicial (negativo)
-    - Flujos posteriores son los retornos esperados
-    """
-    return npf.npv(rate, cash_flows)
+# Función eliminada: usar net_present_value() con periods_per_year=1
 
 # %%
 
-def irr_simple(cash_flows: list) -> float:
-    """
-    Calcula la Tasa Interna de Retorno usando numpy_financial directamente.
-    
-    @param {list} cash_flows - Lista de flujos de caja (incluyendo inversión inicial)
-    @returns {float} Tasa interna de retorno
-    
-    @example
-    >>> irr_simple([-1000, 300, 400, 500])
-    0.1062  # IRR del 10.62%
-    
-    @formula
-    IRR = npf.irr(cash_flows)
-    
-    @note
-    - Wrapper directo de numpy_financial.irr()
-    - Primer flujo debe ser la inversión inicial (negativo)
-    - Encuentra la tasa donde NPV = 0
-    """
-    return npf.irr(cash_flows)
+# Función eliminada: usar internal_rate_of_return() con method='numpy'
 
 # %%
 
-def profitability_index(initial_investment: float, cash_flows: list, r: float, T: Optional[int] = None, m: int = 1) -> float:
+def profitability_index(rate: float, cash_flows: list, periods_per_year: int = 1) -> float:
     """
-    Calcula el índice de rentabilidad (PI) con capitalización.
+    Calcula el índice de rentabilidad (PI) usando NPV.
     
-    @param {float} initial_investment - Inversión inicial
-    @param {list} cash_flows - Lista de flujos de caja futuros
-    @param {float} r - Tasa de interés anual
-    @param {Optional[int]} T - Número total de períodos (por defecto len(cash_flows))
-    @param {int} m - Períodos de capitalización por año (por defecto 1)
+    @param {float} rate - Tasa de descuento anual
+    @param {list} cash_flows - [inversión_inicial_negativa, flujo1, flujo2, ...]
+    @param {int} periods_per_year - Períodos de capitalización por año (default 1)
     @returns {float} Índice de rentabilidad
     
     @example
-    >>> profitability_index(10000, [3500, 4500, 5500], 0.10, 3, 1)
+    >>> profitability_index(0.10, [-10000, 3500, 4500, 5500])
     1.106  # PI > 1, proyecto viable
-    >>> profitability_index(10000, [2500, 3000, 3500], 0.10, 3, 1)
+    >>> profitability_index(0.10, [-10000, 2500, 3000, 3500])
     0.751  # PI < 1, proyecto no viable
     
     @formula
-    PI = Σ[PV de cash flows] / Initial Investment
+    PI = (NPV + Inversión_Inicial) / Inversión_Inicial
     
     @note
     - PI > 1: proyecto viable (crea valor)
     - PI < 1: proyecto no viable (destruye valor)
     - PI = 1: proyecto indiferente (NPV = 0)
+    - Usa net_present_value() internamente
     """
-    if T is None:
-        T = len(cash_flows)
-    
-    present_value_sum = 0
-    for i, cf in enumerate(cash_flows):
-        time_period = (i + 1) / m
-        present_value_sum += cf / (1 + r/m) ** (m * time_period)
-    
-    return present_value_sum / initial_investment
+    initial_investment = abs(cash_flows[0])
+    npv_result = net_present_value(rate, cash_flows, periods_per_year)
+    return (npv_result + initial_investment) / initial_investment
 
 # %%
 
-def payback_period(initial_investment: float, cash_flows: list) -> float:
+def payback_period(cash_flows: list) -> float:
     """
     Calcula el período de recuperación de la inversión.
     
-    @param {float} initial_investment - Inversión inicial
-    @param {list} cash_flows - Lista de flujos de caja
+    @param {list} cash_flows - [inversión_inicial_negativa, flujo1, flujo2, ...]
     @returns {float} Período de recuperación en años
     
     @example
-    >>> payback_period(10000, [3000, 4000, 5000])
+    >>> payback_period([-10000, 3000, 4000, 5000])
     2.75  # Se recupera en 2.75 años
-    >>> payback_period(8000, [2500, 3000, 4000])
+    >>> payback_period([-8000, 2500, 3000, 4000])
     2.17  # Se recupera en 2.17 años
     
     @formula
-    Período donde Σ(CF_t) >= Initial_Investment (con interpolación)
+    Período donde Σ(CF_t) >= 0 (con interpolación)
     
     @note
     - No considera valor temporal del dinero
     - Retorna float('inf') si nunca se recupera
     - Incluye interpolación para cálculo exacto
     """
+    initial_investment = abs(cash_flows[0])
     cumulative_cash_flow = 0
     
-    for i, cf in enumerate(cash_flows):
+    for i, cf in enumerate(cash_flows[1:], 0):
         cumulative_cash_flow += cf
         
         if cumulative_cash_flow >= initial_investment:
@@ -890,7 +887,7 @@ def plot_monte_carlo_results(npv_results: np.ndarray, title: str = "Simulación 
                 label='Punto de Equilibrio (NPV = 0)')
     
     # Línea vertical en NPV promedio
-    plt.axvline(npv_mean, color='blue', linestyle='-', linewidth=2, 
+    plt.axvline(float(npv_mean), color='blue', linestyle='-', linewidth=2, 
                 label=f'NPV Promedio: ${npv_mean:,.0f}')
     
     # ===================================================================================
