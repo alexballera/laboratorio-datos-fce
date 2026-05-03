@@ -1,0 +1,201 @@
+﻿Fecha,Producto,Vendedor,Ciudad,Cantidad,Precio_Unitario
+2024-01-01,Monitor,Juan,Mendoza,6,23030
+2024-01-02,Notebook,LucÃ­a,La Plata,7,87838
+2024-01-03,Teclado,Juan,CÃ³rdoba,3,89717
+2024-01-04,Notebook,Juan,Mendoza,7,43638
+2024-01-05,Notebook,MarÃ­a,CÃ³rdoba,3,72067
+2024-01-06,Mouse,LucÃ­a,Rosario,2,123033
+2024-01-07,Teclado,LucÃ­a,Buenos Aires,4,110977
+2024-01-08,Teclado,MarÃ­a,Rosario,8,93869
+2024-01-09,Teclado,Pedro,Mendoza,9,110186
+2024-01-10,Notebook,Juan,CÃ³rdoba,7,39674
+2024-01-11,Monitor,SofÃ­a,CÃ³rdoba,1,51271
+2024-01-12,Teclado,Juan,La Plata,3,78688
+2024-01-13,Impresora,Juan,CÃ³rdoba,9,116076
+2024-01-14,Notebook,Pedro,La Plata,1,146339
+2024-01-15,Mouse,Juan,Buenos Aires,9,6062
+2024-01-16,Monitor,MarÃ­a,Mendoza,8,55448
+2024-01-17,Impresora,MarÃ­a,La Plata,1,100462
+2024-01-18,Impresora,LucÃ­a,Buenos Aires,6,142301
+2024-01-19,Mouse,SofÃ­a,CÃ³rdoba,5,52915
+2024-01-20,Monitor,Juan,CÃ³rdoba,6,9632
+2024-01-21,Notebook,Juan,Buenos Aires,5,109592
+2024-01-22,Auriculares,Pedro,CÃ³rdoba,6,139668
+2024-01-23,Monitor,MarÃ­a,Buenos Aires,5,114779
+2024-01-24,Mouse,SofÃ­a,La Plata,5,142240
+2024-01-25,Impresora,LucÃ­a,La Plata,4,113099
+2024-01-26,Notebook,MarÃ­a,Buenos Aires,3,12561
+2024-01-27,Monitor,LucÃ­a,La Plata,3,87152
+2024-01-28,Auriculares,Pedro,La Plata,4,130036
+2024-01-29,Auriculares,Pedro,La Plata,9,129049
+2024-01-30,Teclado,Juan,Rosario,2,31734
+2024-01-31,Teclado,SofÃ­a,Mendoza,9,142443
+2024-02-01,Mouse,LucÃ­a,CÃ³rdoba,1,31069
+2024-02-02,Monitor,MarÃ­a,Rosario,1,17910
+2024-02-03,Monitor,Pedro,La Plata,5,78479
+2024-02-04,Impresora,Juan,Buenos Aires,6,86264
+2024-02-05,Impresora,Juan,La Plata,6,28275
+2024-02-06,Impresora,LucÃ­a,Mendoza,3,77274
+2024-02-07,Teclado,Pedro,La Plata,7,105776
+2024-02-08,Monitor,SofÃ­a,Buenos Aires,9,53447
+2024-02-09,Monitor,Pedro,Mendoza,8,131394
+2024-02-10,Auriculares,LucÃ­a,La Plata,6,80703
+2024-02-11,Teclado,LucÃ­a,Mendoza,8,81090
+2024-02-12,Notebook,Pedro,CÃ³rdoba,5,22260
+2024-02-13,Teclado,LucÃ­a,CÃ³rdoba,8,117581
+2024-02-14,Notebook,Pedro,La Plata,4,8812
+2024-02-15,Auriculares,MarÃ­a,Mendoza,8,121148
+2024-02-16,Mouse,Pedro,Buenos Aires,2,121421
+2024-02-17,Monitor,Pedro,La Plata,5,6605
+2024-02-18,Auriculares,LucÃ­a,CÃ³rdoba,9,77303
+2024-02-19,Monitor,LucÃ­a,CÃ³rdoba,4,81125
+2024-02-20,Impresora,Juan,La Plata,6,149990
+2024-02-21,Mouse,Juan,Mendoza,1,129040
+2024-02-22,Mouse,MarÃ­a,CÃ³rdoba,9,149118
+2024-02-23,Auriculares,Juan,Mendoza,1,9324
+2024-02-24,Mouse,Pedro,CÃ³rdoba,5,81323
+2024-02-25,Notebook,LucÃ­a,CÃ³rdoba,4,14111
+2024-02-26,Mouse,Juan,Rosario,3,21389
+2024-02-27,Monitor,Juan,CÃ³rdoba,6,127177
+2024-02-28,Monitor,MarÃ­a,Buenos Aires,2,46427
+2024-02-29,Monitor,MarÃ­a,La Plata,3,127883
+2024-03-01,Monitor,Pedro,La Plata,5,136189
+2024-03-02,Notebook,LucÃ­a,Mendoza,9,130808
+2024-03-03,Teclado,MarÃ­a,CÃ³rdoba,2,117221
+2024-03-04,Impresora,Juan,Buenos Aires,8,18234
+2024-03-05,Auriculares,LucÃ­a,Mendoza,2,58441
+2024-03-06,Monitor,LucÃ­a,Rosario,5,5846
+2024-03-07,Mouse,Juan,Mendoza,7,15954
+2024-03-08,Monitor,MarÃ­a,Mendoza,8,84239
+2024-03-09,Mouse,Juan,CÃ³rdoba,1,51514
+2024-03-10,Impresora,LucÃ­a,Rosario,6,93236
+2024-03-11,Impresora,SofÃ­a,Mendoza,1,102579
+2024-03-12,Impresora,SofÃ­a,Buenos Aires,2,142541
+2024-03-13,Mouse,Pedro,Buenos Aires,1,47101
+2024-03-14,Monitor,Juan,La Plata,5,69323
+2024-03-15,Impresora,Juan,Rosario,9,96922
+2024-03-16,Notebook,Pedro,Rosario,6,132534
+2024-03-17,Mouse,Pedro,La Plata,1,72584
+2024-03-18,Mouse,Pedro,Mendoza,1,109537
+2024-03-19,Monitor,LucÃ­a,Rosario,2,83477
+2024-03-20,Mouse,Juan,Buenos Aires,9,47533
+2024-03-21,Mouse,LucÃ­a,Buenos Aires,3,6828
+2024-03-22,Impresora,Pedro,CÃ³rdoba,1,6917
+2024-03-23,Monitor,Juan,Rosario,5,25618
+2024-03-24,Impresora,LucÃ­a,Mendoza,7,37254
+2024-03-25,Impresora,LucÃ­a,La Plata,6,110292
+2024-03-26,Monitor,Pedro,La Plata,1,52362
+2024-03-27,Auriculares,Juan,Mendoza,5,25128
+2024-03-28,Impresora,Pedro,CÃ³rdoba,5,128781
+2024-03-29,Notebook,Juan,La Plata,6,70545
+2024-03-30,Notebook,SofÃ­a,Rosario,3,87180
+2024-03-31,Mouse,MarÃ­a,CÃ³rdoba,5,92958
+2024-04-01,Notebook,MarÃ­a,Rosario,7,145937
+2024-04-02,Mouse,MarÃ­a,Buenos Aires,5,138291
+2024-04-03,Auriculares,Pedro,CÃ³rdoba,5,44809
+2024-04-04,Monitor,SofÃ­a,La Plata,5,121748
+2024-04-05,Monitor,Juan,CÃ³rdoba,3,10287
+2024-04-06,Monitor,LucÃ­a,CÃ³rdoba,1,13512
+2024-04-07,Notebook,Juan,CÃ³rdoba,5,137414
+2024-04-08,Auriculares,LucÃ­a,CÃ³rdoba,9,113872
+2024-04-09,Notebook,Juan,Rosario,1,98070
+2024-04-10,Notebook,SofÃ­a,Buenos Aires,3,84767
+2024-04-11,Auriculares,LucÃ­a,Mendoza,4,102829
+2024-04-12,Auriculares,Pedro,CÃ³rdoba,1,47078
+2024-04-13,Auriculares,Juan,La Plata,1,111288
+2024-04-14,Auriculares,Juan,CÃ³rdoba,8,88524
+2024-04-15,Monitor,LucÃ­a,La Plata,2,17219
+2024-04-16,Teclado,Pedro,Rosario,8,5235
+2024-04-17,Teclado,Pedro,La Plata,7,47929
+2024-04-18,Auriculares,SofÃ­a,Mendoza,2,132309
+2024-04-19,Teclado,Pedro,Buenos Aires,6,72444
+2024-04-20,Teclado,Pedro,La Plata,6,144639
+2024-04-21,Auriculares,Pedro,La Plata,3,106834
+2024-04-22,Teclado,MarÃ­a,Buenos Aires,2,89555
+2024-04-23,Notebook,SofÃ­a,Mendoza,1,78698
+2024-04-24,Mouse,Juan,CÃ³rdoba,6,129450
+2024-04-25,Mouse,LucÃ­a,La Plata,5,141487
+2024-04-26,Auriculares,Juan,Buenos Aires,9,48925
+2024-04-27,Monitor,SofÃ­a,Rosario,1,142023
+2024-04-28,Auriculares,LucÃ­a,Buenos Aires,7,92388
+2024-04-29,Monitor,SofÃ­a,Rosario,5,13007
+2024-04-30,Mouse,Pedro,Mendoza,5,63596
+2024-05-01,Auriculares,LucÃ­a,CÃ³rdoba,2,126101
+2024-05-02,Impresora,Pedro,Buenos Aires,3,93861
+2024-05-03,Notebook,Juan,La Plata,7,91740
+2024-05-04,Teclado,Juan,Mendoza,6,20524
+2024-05-05,Monitor,LucÃ­a,Buenos Aires,2,136149
+2024-05-06,Impresora,LucÃ­a,La Plata,6,130501
+2024-05-07,Teclado,SofÃ­a,Buenos Aires,2,25611
+2024-05-08,Teclado,SofÃ­a,Rosario,2,19060
+2024-05-09,Auriculares,Pedro,Buenos Aires,2,48303
+2024-05-10,Teclado,LucÃ­a,Buenos Aires,3,44711
+2024-05-11,Notebook,Juan,Buenos Aires,2,148026
+2024-05-12,Impresora,SofÃ­a,Mendoza,4,78340
+2024-05-13,Teclado,SofÃ­a,Buenos Aires,9,107974
+2024-05-14,Auriculares,Juan,La Plata,6,145256
+2024-05-15,Notebook,SofÃ­a,Rosario,1,72728
+2024-05-16,Mouse,Pedro,Rosario,8,16246
+2024-05-17,Impresora,LucÃ­a,Buenos Aires,7,132796
+2024-05-18,Teclado,Juan,Mendoza,3,97263
+2024-05-19,Auriculares,LucÃ­a,Mendoza,1,140090
+2024-05-20,Mouse,SofÃ­a,La Plata,5,16302
+2024-05-21,Mouse,SofÃ­a,Buenos Aires,4,72506
+2024-05-22,Monitor,Juan,Rosario,8,46157
+2024-05-23,Notebook,Pedro,Mendoza,1,59917
+2024-05-24,Teclado,MarÃ­a,Buenos Aires,1,101646
+2024-05-25,Auriculares,Juan,Mendoza,4,88122
+2024-05-26,Monitor,MarÃ­a,Mendoza,8,29519
+2024-05-27,Notebook,MarÃ­a,Rosario,5,85910
+2024-05-28,Monitor,Pedro,CÃ³rdoba,2,125430
+2024-05-29,Impresora,MarÃ­a,La Plata,6,76324
+2024-05-30,Notebook,MarÃ­a,La Plata,5,10408
+2024-05-31,Notebook,Pedro,Rosario,2,64379
+2024-06-01,Teclado,MarÃ­a,Mendoza,3,30053
+2024-06-02,Notebook,MarÃ­a,Buenos Aires,9,145518
+2024-06-03,Monitor,MarÃ­a,Mendoza,7,136994
+2024-06-04,Notebook,Juan,Rosario,7,103723
+2024-06-05,Teclado,Juan,La Plata,6,56356
+2024-06-06,Teclado,Juan,Mendoza,8,15789
+2024-06-07,Impresora,Pedro,La Plata,4,102720
+2024-06-08,Monitor,SofÃ­a,Buenos Aires,8,71656
+2024-06-09,Mouse,MarÃ­a,La Plata,4,49028
+2024-06-10,Mouse,MarÃ­a,La Plata,8,69484
+2024-06-11,Notebook,Pedro,CÃ³rdoba,9,37154
+2024-06-12,Impresora,MarÃ­a,CÃ³rdoba,3,7336
+2024-06-13,Auriculares,Juan,CÃ³rdoba,3,108677
+2024-06-14,Notebook,SofÃ­a,La Plata,2,72779
+2024-06-15,Impresora,LucÃ­a,Rosario,3,24029
+2024-06-16,Monitor,MarÃ­a,La Plata,3,64201
+2024-06-17,Monitor,Juan,Rosario,5,37265
+2024-06-18,Monitor,LucÃ­a,Rosario,5,107916
+2024-06-19,Monitor,SofÃ­a,CÃ³rdoba,2,51197
+2024-06-20,Monitor,LucÃ­a,Mendoza,6,130733
+2024-06-21,Impresora,Juan,Buenos Aires,5,76907
+2024-06-22,Impresora,LucÃ­a,CÃ³rdoba,6,133876
+2024-06-23,Teclado,Pedro,CÃ³rdoba,1,69435
+2024-06-24,Mouse,LucÃ­a,Mendoza,5,45631
+2024-06-25,Monitor,MarÃ­a,Buenos Aires,9,134038
+2024-06-26,Auriculares,MarÃ­a,La Plata,2,25103
+2024-06-27,Impresora,Pedro,La Plata,1,69772
+2024-06-28,Auriculares,Juan,CÃ³rdoba,9,131108
+2024-06-29,Auriculares,MarÃ­a,Buenos Aires,9,19382
+2024-06-30,Auriculares,SofÃ­a,CÃ³rdoba,9,89291
+2024-07-01,Teclado,MarÃ­a,Rosario,6,106195
+2024-07-02,Impresora,MarÃ­a,CÃ³rdoba,8,139828
+2024-07-03,Auriculares,Juan,CÃ³rdoba,1,25609
+2024-07-04,Monitor,LucÃ­a,La Plata,4,80683
+2024-07-05,Notebook,MarÃ­a,La Plata,1,129714
+2024-07-06,Auriculares,Pedro,La Plata,8,135330
+2024-07-07,Teclado,LucÃ­a,Rosario,1,76315
+2024-07-08,Impresora,SofÃ­a,La Plata,3,82834
+2024-07-09,Teclado,Juan,Buenos Aires,4,131205
+2024-07-10,Auriculares,SofÃ­a,Mendoza,8,19153
+2024-07-11,Impresora,LucÃ­a,Buenos Aires,6,81325
+2024-07-12,Notebook,LucÃ­a,Buenos Aires,7,149071
+2024-07-13,Auriculares,LucÃ­a,La Plata,8,60318
+2024-07-14,Teclado,SofÃ­a,Mendoza,2,136886
+2024-07-15,Mouse,LucÃ­a,Mendoza,8,120033
+2024-07-16,Monitor,SofÃ­a,Mendoza,3,81077
+2024-07-17,Teclado,LucÃ­a,Rosario,7,95474
+2024-07-18,Impresora,Pedro,La Plata,3,138515
