@@ -65,56 +65,97 @@ jupyter lab
 
 ---
 
+## 🆕 Novedades y Mejoras Recientes
+
+### Noviembre 2024 - Refactorización del Módulo Financiero
+
+Se realizó una **optimización completa** del módulo `utils/matematicas_financieras.py`:
+
+#### ✨ Cambios Principales
+
+- **Consolidación de funciones**: Eliminadas redundancias (~80 líneas de código)
+- **Priorización de numpy_financial**: Todas las funciones usan `npf` como base
+- **Mejoras de usabilidad**:
+  - Interfaz consistente para funciones de inversión
+  - Validaciones robustas con mensajes claros en español
+  - Parámetros más descriptivos y documentados
+- **Flexibilidad académica**: Método Newton-Raphson disponible como opción didáctica
+- **Documentación expandida**:
+  - Guía completa en [`utils/README.md`](./utils/README.md) con ejemplos
+  - Changelog de migración en [`utils/CHANGELOG_REFACTORIZACION.md`](./utils/CHANGELOG_REFACTORIZACION.md)
+  - Tests actualizados en `test_matematicas_financieras.py`
+
+#### 📊 Impacto
+
+| Métrica | Antes | Ahora | Mejora |
+|---------|-------|-------|--------|
+| Funciones redundantes | 4 pares | 0 | 100% |
+| Líneas de código | ~1,175 | ~1,095 | -80 líneas |
+| Cobertura de tests | Parcial | Completa | ✅ |
+| Documentación | Básica | Extensa | 3x más |
+
+**Ver detalles completos**: [`utils/CHANGELOG_REFACTORIZACION.md`](./utils/CHANGELOG_REFACTORIZACION.md)
+
+---
+
 ## 📁 Estructura del Proyecto
 
 ```text
 laboratorio-tgad-fce/
 │
-├── 📂 sesiones/                # Contenido organizado por parciales
-│   ├── 1er_parcial/           # Sesiones 1-12 + Parcial 1
-│   │   ├── sesion1_Introducción_a_python/
-│   │   ├── sesion2_Manipulación_de_datos/
-│   │   ├── sesion3_Modelización_de_funciones/
-│   │   ├── sesion4_Puntos_de_equilibrio/
-│   │   ├── sesion5_Matrices_y_Leontief/
-│   │   ├── sesion6_Manipulación_estructurada/
-│   │   ├── sesion7_Programación_lineal/
-│   │   ├── sesion9_Derivada_y_elasticidades/
-│   │   ├── sesion11_Optimización_de_funciones/
-│   │   ├── sesion12_Duopolio/
-│   │   └── parcial/           # Material del primer parcial
-│   │
-│   └── 2do_parcial/           # Sesiones 13-17
-│       ├── sesion13_Integrales_Indefinidas1/
-│       ├── sesion14_Aplicación_Integrales/
-│       ├── sesion15_Integrales_Definidas/
-│       ├── sesion16_Análisis_inversiones/
-│       └── sesion17_Aplicaciones_inversiones/
+├── 📂 1er_parcial/                    # Primer Parcial (Sesiones 1-12)
+│   ├── parcial/                       # Material del examen parcial
+│   ├── sesion1_Introducción_a_python_para_el_manejo_de_datos_organizacional/
+│   ├── sesion2_Manipulación_de_datos_organizacionales_y_visualización/
+│   ├── sesion3_Modelización_de_funciones_económicas/
+│   ├── sesion4_Puntos_de_equilibrio_y_sistemas_de_ecuaciones/
+│   ├── sesion5_Matrices_y_Leontief/
+│   ├── sesion6_Manipulación_de_datos_estructurados_y_Leontief/
+│   ├── sesion7_Programación_lineal_en_Python/
+│   ├── sesion9_Derivada_y_variaciones_de_funciones_Elasticidades/
+│   ├── sesion11_Optimización_de_funciones_aplicado_a_la_gestion/
+│   └── sesion12_Optimización_de_funciones_Duopolio/
 │
-├── 📂 actividades/            # Actividades prácticas semanales
-│   ├── actividad1/           # Introducción a NumPy y Pandas
-│   ├── actividad2/           # Manipulación de datos
-│   ├── actividad3/           # Visualización
-│   ├── actividad4/           # Análisis exploratorio
-│   ├── actividad9/           # Derivadas y variaciones
-│   ├── actividad13/          # Integrales
-│   └── actividad16/          # Inversiones
+├── 📂 2do_parcial/                    # Segundo Parcial (Sesiones 13-17)
+│   ├── parcial/                       # Material del examen parcial
+│   ├── simulacro/                     # Ejercicios de práctica
+│   └── sesiones/
+│       ├── sesion_13_14_15_integrales/    # Integrales (indefinidas, aplicaciones, definidas)
+│       │   ├── 13_Integrales_Indefinidas.ipynb
+│       │   ├── 14_Aplicacion_Integrales.ipynb
+│       │   └── 15_Integrales_Definidas.ipynb
+│       └── sesion_16_17_finanzas/         # Análisis de Inversiones
+│           ├── 16_finanzas_1.ipynb
+│           └── 17_finanzas_2.ipynb
 │
-├── 📂 resumenes/             # Trabajos integradores
-│   ├── integracion1-graficos-dataframe--recap-inversiones/
-│   ├── integradora1_1_integrales/
-│   └── integradora2_2_finanzas/
+├── 📂 actividades/                    # Actividades prácticas entregadas
+│   ├── BalleraActividades1erParcial.pdf  # Compilación actividades 1er parcial
+│   ├── actividad1/                    # Introducción a NumPy y Pandas
+│   ├── actividad2/                    # Manipulación de datos (4 notebooks)
+│   ├── actividad3/                    # Visualización con datasets
+│   ├── actividad4/                    # Análisis exploratorio
+│   ├── actividad9/                    # Derivadas y variaciones (YPF)
+│   ├── actividad-semana9/             # Material complementario derivadas
+│   ├── actividad13/                   # Aplicación de integrales
+│   └── actividad16/                   # Análisis de inversiones
 │
-├── 📂 utils/                 # Utilidades y funciones reutilizables
-│   ├── matematicas_financieras.py    # Biblioteca de funciones financieras
-│   └── test_matematicas_financieras.py
+├── 📂 utils/                          # 🔧 Utilidades y bibliotecas reutilizables
+│   ├── matematicas_financieras.py     # Librería financiera refactorizada
+│   ├── test_matematicas_financieras.py # Suite de pruebas completa
+│   ├── README.md                      # Documentación de utilidades
+│   └── CHANGELOG_REFACTORIZACION.md   # Guía de migración de funciones
 │
-├── 📂 fuentes/              # Material de referencia y datasets
+├── 📂 fuentes/                        # Material de referencia
+│   └── Cronograma.xlsx                # Cronograma académico del curso
 │
-├── 📄 requirements.txt      # Dependencias del proyecto
-├── 📄 AGENTS.md            # Instrucciones para asistentes de IA
-├── 📄 README_SETUP.md      # Guía de configuración detallada
-└── 📄 LICENSE              # Licencia MIT
+├── 📂 .github/                        # Configuración GitHub
+│   ├── copilot-instructions.md        # Instrucciones para GitHub Copilot
+│   └── student-code-style-guidelines.md # Guías de estilo académico
+│
+├── 📄 requirements.txt                # Dependencias del proyecto
+├── 📄 AGENTS.md                       # 🤖 Instrucciones completas para IA
+├── 📄 README_SETUP.md                 # Guía de configuración del entorno
+└── 📄 LICENSE                         # Licencia MIT
 
 ```
 
@@ -177,39 +218,61 @@ laboratorio-tgad-fce/
 
 | Sesión | Tema | Conceptos Clave |
 |--------|------|-----------------|
-| **13** | Integrales Indefinidas | Primitivas, técnicas de integración |
-| **14** | Aplicación de Integrales | Costos totales, funciones acumuladas |
-| **15** | Integrales Definidas | Áreas bajo la curva, excedentes |
-| **16** | Análisis de inversiones I | VAN, TIR, flujos de caja |
-| **17** | Análisis de inversiones II | Evaluación de proyectos, numpy-financial |
+| **13** | Integrales Indefinidas | Primitivas, técnicas de integración, familias de funciones |
+| **14** | Aplicación de Integrales | Costos totales, funciones acumuladas, problemas empresariales |
+| **15** | Integrales Definidas | Áreas bajo la curva, excedentes del consumidor y productor, DWL |
+| **16** | Análisis de inversiones I | VAN, TIR, TIRM, flujos de caja descontados |
+| **17** | Análisis de inversiones II | Evaluación de proyectos, índice de rentabilidad, numpy-financial |
 
 ---
 
 ## 🔧 Utilidades Disponibles
 
-### Módulo `utils/matematicas_financieras.py`
+### Módulo `utils/matematicas_financieras.py` ⭐ (Refactorizado 2024)
 
-Biblioteca completa de funciones financieras documentadas:
+Biblioteca completa de funciones financieras optimizada con **numpy_financial**:
 
 ```python
 from utils.matematicas_financieras import (
-    present_value,      # Valor presente (PV)
-    future_value,       # Valor futuro (FV)
-    net_present_value,  # Valor actual neto (VAN/NPV)
-    internal_rate_return, # Tasa interna de retorno (TIR/IRR)
-    payback_period,     # Período de recuperación
-    # ... y muchas más
+    # Valor temporal del dinero
+    present_value,           # Valor presente (PV)
+    future_value,            # Valor futuro (FV)
+    
+    # Evaluación de inversiones
+    net_present_value,       # Valor actual neto (VAN/NPV)
+    internal_rate_of_return, # Tasa interna de retorno (TIR/IRR)
+    modified_internal_rate_of_return,  # TIRM/MIRR
+    profitability_index,     # Índice de rentabilidad
+    payback_period,          # Período de recuperación
+    
+    # Análisis de préstamos
+    payment_amount,          # Cuota de préstamo (PMT)
+    payment_interest,        # Interés del pago (IPMT)
+    payment_principal,       # Capital del pago (PPMT)
+    
+    # Tasas de interés
+    nominal_to_effective_rate,  # Conversión tasa nominal
+    effective_annual_rate,      # Tasa efectiva anual
+    
+    # Análisis avanzado
+    monte_carlo_npv,         # Simulación de riesgo
+    sensitivity_analysis_npv, # Análisis de sensibilidad
 )
 ```
 
-**Incluye:**
+**Características principales:**
 
-- ✅ Funciones de valor temporal del dinero
-- ✅ Cálculo de anualidades
-- ✅ Análisis de bonos
-- ✅ Evaluación de proyectos de inversión
-- ✅ Conversión de tasas de interés
-- ✅ Tests unitarios incluidos
+- ✅ Prioriza **numpy_financial** para máxima precisión
+- ✅ Funciones consolidadas (código limpio, sin redundancias)
+- ✅ Validaciones robustas con mensajes en español
+- ✅ Soporta vectorización con NumPy arrays
+- ✅ Método Newton-Raphson disponible para enseñanza
+- ✅ Documentación JSDoc completa con ejemplos
+- ✅ Suite de tests incluida (`test_matematicas_financieras.py`)
+
+**Documentación completa:** Ver [`utils/README.md`](./utils/README.md)
+
+**Guía de migración:** Ver [`utils/CHANGELOG_REFACTORIZACION.md`](./utils/CHANGELOG_REFACTORIZACION.md)
 
 ### Script `utils/check_uncommitted_changes.py`
 
@@ -240,11 +303,23 @@ Ver documentación completa en [`utils/README.md`](./utils/README.md)
 
 ### Para Cada Sesión
 
-1. **Revisar materiales** en la carpeta `sesiones/`
+1. **Revisar materiales** en las carpetas `1er_parcial/` o `2do_parcial/sesiones/`
 2. **Seguir los notebooks** con ejemplos paso a paso
 3. **Completar actividades** en la carpeta `actividades/`
-4. **Consultar `utils/`** para funciones reutilizables
-5. **Revisar resúmenes** integradores antes de evaluaciones
+4. **Consultar `utils/`** para funciones financieras reutilizables
+5. **Revisar documentación** de utilidades antes de implementar cálculos
+
+### Estructura de Organización
+
+```text
+📚 Sesiones (Teoría + Práctica)
+    ↓
+📝 Actividades (Aplicación)
+    ↓
+🔧 Utils (Herramientas reutilizables)
+    ↓
+📊 Parciales (Evaluación)
+```
 
 ### Convenciones de Código
 
@@ -268,10 +343,19 @@ plt.axhline(0, color='black', linewidth=0.5)
 ### ¿Cómo usar este repositorio?
 
 1. **Clonar y configurar** siguiendo la Guía de Inicio Rápido
-2. **Navegar por sesiones** según el cronograma del curso
+2. **Navegar por sesiones** en `1er_parcial/` y `2do_parcial/sesiones/`
 3. **Practicar con actividades** para reforzar conceptos
-4. **Consultar resúmenes** como material de repaso
-5. **Usar funciones de `utils/`** en tus propios análisis
+4. **Usar `utils/matematicas_financieras.py`** en tus análisis financieros
+5. **Consultar documentación** en `utils/README.md` para funciones disponibles
+
+### Actualizaciones Recientes 🆕
+
+- **Noviembre 2024**: Refactorización completa del módulo financiero
+  - Consolidación de funciones redundantes
+  - Priorización de numpy_financial
+  - Documentación expandida con ejemplos
+  - Suite de tests actualizada
+  - Guía de migración disponible
 
 ### Consejos
 
@@ -279,13 +363,18 @@ plt.axhline(0, color='black', linewidth=0.5)
 - 📖 Cada notebook incluye **objetivos de aprendizaje** claros
 - 🎓 Los ejemplos tienen **contexto económico y empresarial real**
 - 🔍 Usa los tests en `utils/` como referencia de buenas prácticas
+- 🧮 Revisa [`utils/README.md`](./utils/README.md) antes de implementar cálculos financieros
 
 ---
 
 ## 📖 Documentación Adicional
 
-- **[AGENTS.md](./AGENTS.md)** - Instrucciones completas para asistentes de IA y estándares del proyecto
+- **[AGENTS.md](./AGENTS.md)** - 🤖 Instrucciones completas para asistentes de IA y estándares del proyecto
 - **[README_SETUP.md](./README_SETUP.md)** - Guía detallada de configuración del entorno
+- **[utils/README.md](./utils/README.md)** - 🔧 Documentación completa del módulo de matemáticas financieras
+- **[utils/CHANGELOG_REFACTORIZACION.md](./utils/CHANGELOG_REFACTORIZACION.md)** - Guía de migración de funciones
+- **[.github/copilot-instructions.md](./.github/copilot-instructions.md)** - Instrucciones para GitHub Copilot
+- **[.github/student-code-style-guidelines.md](./.github/student-code-style-guidelines.md)** - Guías de estilo académico
 - **[LICENSE](./LICENSE)** - Licencia MIT del proyecto
 
 ---

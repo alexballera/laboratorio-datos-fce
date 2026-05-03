@@ -4,13 +4,16 @@ Script de prueba para verificar todas las funciones de matemáticas financieras
 actualizadas con numpy_financial.
 
 Ejecutar desde la raíz del proyecto:
-python test_matematicas_financieras.py
+python utils/test_matematicas_financieras.py
 """
 
 import sys
-sys.path.append('')
+from pathlib import Path
 
-from matematicas_financieras import *
+# Agregar el directorio raíz al path
+sys.path.insert(0, str(Path(__file__).parent.parent))
+
+from utils.matematicas_financieras import *
 import numpy as np
 
 def test_tasas_interes():
@@ -78,37 +81,31 @@ def test_analisis_inversiones():
     print("=" * 50)
     
     # Datos del proyecto
-    inicial = 10000
-    flujos = [3000, 4000, 5000]
+    cash_flows_completos = [-10000, 3000, 4000, 5000]
     tasa = 0.10
-    cash_flows_completos = [-inicial] + flujos
     
-    # NPV usando función compleja
-    npv_complejo = net_present_value(inicial, flujos, tasa)
-    print(f"NPV (función compleja): ${npv_complejo:.2f}")
+    # NPV usando función refactorizada
+    npv_result = net_present_value(tasa, cash_flows_completos)
+    print(f"NPV: ${npv_result:.2f}")
     
-    # NPV usando numpy_financial directo
-    npv_simple_result = npv_simple(tasa, cash_flows_completos)
-    print(f"NPV (numpy_financial): ${npv_simple_result:.2f}")
+    # IRR usando método numpy (default)
+    irr_numpy = internal_rate_of_return(cash_flows_completos)
+    print(f"IRR (método numpy): {irr_numpy:.2%}")
     
-    # IRR usando función compleja
-    irr_complejo = internal_rate_of_return(inicial, flujos)
-    print(f"IRR (función compleja): {irr_complejo:.2%}")
-    
-    # IRR usando numpy_financial directo
-    irr_simple_result = irr_simple(cash_flows_completos)
-    print(f"IRR (numpy_financial): {irr_simple_result:.2%}")
+    # IRR usando método Newton-Raphson
+    irr_newton = internal_rate_of_return(cash_flows_completos, method='newton')
+    print(f"IRR (método Newton): {irr_newton:.2%}")
     
     # MIRR
     mirr = modified_internal_rate_of_return(cash_flows_completos, 0.08, 0.12)
     print(f"MIRR (financiamiento 8%, reinversión 12%): {mirr:.2%}")
     
     # Índice de rentabilidad
-    pi = profitability_index(inicial, flujos, tasa)
-    print(f"Índice de rentabilidad: {pi:.2f}")
+    pi = profitability_index(tasa, cash_flows_completos)
+    print(f"Índice de rentabilidad: {pi:.3f}")
     
     # Período de recuperación
-    pb = payback_period(inicial, flujos)
+    pb = payback_period(cash_flows_completos)
     print(f"Período de recuperación: {pb:.2f} años")
 
 def test_anualidades():
@@ -146,8 +143,10 @@ def main():
     print("• Anualidades: present_value_annuity, future_value_annuity")
     print("• Pagos: payment_amount, payment_interest, payment_principal")
     print("• Inversiones: net_present_value, internal_rate_of_return, profitability_index, payback_period")
-    print("• numpy_financial directo: npv_simple, irr_simple, modified_internal_rate_of_return")
-    print("• Análisis avanzado: sensitivity_analysis_npv, monte_carlo_npv, batch_loan_analysis")
+    print("• Avanzadas: modified_internal_rate_of_return, monte_carlo_npv, sensitivity_analysis_npv")
+    print("\nFunciones eliminadas (usar versiones consolidadas):")
+    print("  ✗ npv_simple → usar net_present_value()")
+    print("  ✗ irr_simple → usar internal_rate_of_return(method='numpy')")
 
 if __name__ == "__main__":
     main()
