@@ -274,6 +274,29 @@ from utils.matematicas_financieras import (
 
 **Guía de migración:** Ver [`utils/CHANGELOG_REFACTORIZACION.md`](./utils/CHANGELOG_REFACTORIZACION.md)
 
+### Script `utils/check_uncommitted_changes.py`
+
+Verificador de cambios sin commitear para operaciones seguras en la nube:
+
+```bash
+# Verificación básica
+python utils/check_uncommitted_changes.py
+
+# Modo estricto (incluye archivos no rastreados)
+python utils/check_uncommitted_changes.py --strict
+```
+
+**Características:**
+
+- ✅ Detecta archivos modificados sin commitear
+- ✅ Detecta cambios en staging sin commit
+- ✅ Modo estricto para archivos no rastreados
+- ✅ Integrado con GitHub Actions
+- ✅ Mensajes descriptivos en español
+- ✅ Tests unitarios incluidos
+
+Ver documentación completa en [`utils/README.md`](./utils/README.md)
+
 ---
 
 ## 📝 Flujo de Trabajo Recomendado

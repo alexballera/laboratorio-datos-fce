@@ -1,6 +1,6 @@
-# 🧮 Utilidades de Matemáticas Financieras
+# 🧮 Utilidades del Proyecto
 
-Librería optimizada de funciones financieras para el Laboratorio TGAD (FCE-UBA).
+Librería optimizada de funciones financieras y herramientas de desarrollo para el Laboratorio TGAD (FCE-UBA).
 
 ---
 
@@ -9,7 +9,10 @@ Librería optimizada de funciones financieras para el Laboratorio TGAD (FCE-UBA)
 ```
 utils/
 ├── matematicas_financieras.py      # Librería principal (refactorizada)
-├── test_matematicas_financieras.py # Suite de pruebas
+├── test_matematicas_financieras.py # Suite de pruebas financieras
+├── check_uncommitted_changes.py    # Verificador de cambios sin commitear
+├── test_check_uncommitted_changes.py # Suite de pruebas del verificador
+├── pre_cloud_check.py              # Wrapper de verificaciones pre-cloud
 ├── CHANGELOG_REFACTORIZACION.md    # Guía de migración detallada
 └── README.md                        # Este archivo
 ```
@@ -145,7 +148,7 @@ irr_newton = internal_rate_of_return(cash_flows, method='newton')
 ```python
 # Considera tasas diferentes para financiamiento y reinversión
 mirr = modified_internal_rate_of_return(
-    cash_flows, 
+    cash_flows,
     finance_rate=0.08,    # Costo de financiamiento
     reinvest_rate=0.12    # Tasa de reinversión
 )
@@ -250,9 +253,10 @@ irr = internal_rate_of_return(cash_flows, method='numpy')
 ```bash
 # Desde la raíz del proyecto
 python utils/test_matematicas_financieras.py
+python -m unittest utils/test_check_uncommitted_changes.py -v
 ```
 
-### Salida Esperada
+### Salida Esperada (test_matematicas_financieras.py)
 ```
 ==================================================
 PRUEBAS DE TASAS DE INTERÉS
@@ -271,6 +275,58 @@ MIRR: 9.82%
 
 ✅ TODAS LAS PRUEBAS COMPLETADAS EXITOSAMENTE
 ```
+
+---
+
+## 🔍 Verificador de Cambios Sin Commitear
+
+### Script `check_uncommitted_changes.py`
+Herramienta para detectar cambios sin commitear antes de operaciones en la nube.
+
+#### 🎯 Propósito
+Previene pérdida de trabajo local al verificar el estado del repositorio antes de:
+- Operaciones de GitHub Copilot Workspace
+- Cambio de ramas
+- Operaciones en la nube
+- Colaboración en equipo
+
+#### 📖 Uso
+
+##### Verificación rápida (recomendada)
+```bash
+python utils/pre_cloud_check.py
+```
+
+##### Modo estándar
+```bash
+python utils/check_uncommitted_changes.py
+```
+
+##### Modo estricto (incluye archivos no rastreados)
+```bash
+python utils/check_uncommitted_changes.py --strict
+```
+
+#### 📤 Códigos de Salida
+- `0`: Repositorio limpio
+- `1`: Hay cambios sin commitear
+- `2`: Error al ejecutar git
+
+#### 💡 Ejemplo de Salida
+```
+❌ Cambios sin commitear detectados:
+⚠️  2 archivo(s) modificado(s) sin agregar:
+   - sesiones/sesion1/practica.ipynb
+   - README.md
+
+💡 Sugerencias:
+   1. Commitea los cambios: git add . && git commit -m 'mensaje'
+   2. Descarta los cambios: git restore .
+   3. Guarda temporalmente: git stash
+```
+
+#### 🔗 Integración con GitHub Actions
+Se ejecuta automáticamente en `.github/workflows/check-uncommitted.yml` en cada push o pull request.
 
 ---
 
@@ -332,6 +388,15 @@ cash_flows = [-10000, 3000, 4000]  # Inversión negativa
 
 ---
 
+## 📝 Convenciones
+
+- Todos los scripts deben incluir tests
+- La documentación debe estar en español
+- Usar type hints en Python
+- Seguir PEP 8 para el estilo de código
+
+---
+
 ## 📚 Referencias
 
 - **numpy_financial**: https://numpy.org/numpy-financial/
@@ -351,7 +416,7 @@ Para reportar bugs o sugerir mejoras:
 
 ---
 
-## 📝 Licencia
+## 📄 Licencia
 
 Material académico de uso educativo para FCE-UBA.
 
@@ -360,5 +425,3 @@ Material académico de uso educativo para FCE-UBA.
 ## 🎓 Créditos
 
 **Laboratorio TGAD - Facultad de Ciencias Económicas - Universidad de Buenos Aires**
-
-Refactorización 2024: Priorización de numpy_financial y consolidación de funciones redundantes.
